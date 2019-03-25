@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>栓选出大于18岁的</title>
+</head>
+<body>
+    <script>
+        function Person(n,a){
+            this.name=n;
+            this.age=a;
+        }
+
+        Person.prototype.toString=function(){
+            return  "Person{姓名为"+this.name+"，年龄为"+this.age+"}"
+        }
+
+        var per=new Person('孙悟空',20); 
+        var per1=new Person('牛魔王',25); 
+        var per2=new Person('红孩儿',10); 
+        var per3=new Person('蜘蛛精',16);   
+        var per4=new Person('猪八戒',38); 
+
+        var arr=[per,per1,per2,per3,per4];
+
+        // console.log(arr);
+
+        function hs(s){
+            var newarr=[];//建立一个新数组来存储满18岁的对象
+            for(var i=0;i<s.length;i++){
+                var p=arr[i];//var p=arr[1]=new Person('孙悟空',20); 
+                if(p.age>=18){
+                    newarr.push(p);
+                  }         
+            }
+            return newarr;
+        }
+
+        var result=hs(arr);
+         document.write(result);
+       
+    </script>
+</body>
+</html>

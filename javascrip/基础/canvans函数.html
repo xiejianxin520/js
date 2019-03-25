@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="600px" height="300px" style="border:1px solid black"></canvas>
+    <script type="text/javascript">
+       // var canvas=document.getElementById('canvas');
+    //     var c=canvas.getContext('2d');
+    // function draw(x,y){
+    //     c.fillStyle="red";
+    //     c.beginPath();
+    //     c.arc(x,y,10,0,Math.PI*2,true);
+    //     c.closePath();
+    //     c.fill();
+    // }
+    // for(var i=0;i<12;i++){
+    //     for(var j=0;j<24;j++){
+    //         draw(12.5+25*j,12.5+25*i)
+    //     }
+    // }
+
+        var canvas=document.getElementById('canvas');
+        var c=canvas.getContext('2d');
+        function draw(){
+            for(var i=0;i<12;i++){
+                for(var j=0;j<24;j++){
+            c.fillStyle='rgb(240,'+Math.floor(255-11.5*i)+','+Math.floor(255-11.5*j)+')';
+            c.beginPath();
+            c.arc(13+25*j,13+25*i,10,0,Math.PI*2,true);
+            c.closePath();
+            c.fill();
+                 }
+            }   
+        }
+
+    draw();
+
+
+
+    </script>
+</body>
+</html>

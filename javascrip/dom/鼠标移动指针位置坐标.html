@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        #id1{
+            width: 500px;
+            height: 300px;
+            border: 1px solid black;
+            margin-bottom: 20px;
+        }
+        #id2{
+            height: 50px;
+            width:400px;
+            border:1px solid black;
+        }
+    </style>
+    <script type="text/javascript">
+    window.onload = function(){
+        var id1 = document.getElementById('id1');
+        var id2 = document.getElementById('id2');
+         id1.onmousemove = function(event){
+             event = event || window.event;//浏览器兼容的问题
+
+             var x = event.clientX;
+             var y = event.clientY;
+
+             id2.innerHTML='鼠标的横坐标为'+x+',鼠标的纵坐标为'+y;
+             
+         }
+    } 
+    
+    </script>
+<body>
+    <div id="id1"></div>
+    <div id="id2"></div>
+</body>
+</html>

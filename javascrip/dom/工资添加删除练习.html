@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+		table{
+                /* border-spacing: 3px;
+                background-color:green; */
+                width: 300px;
+                margin: 20px auto 10px auto;
+                             }
+        #id1{
+            border: 2px solid black;
+            width: 300px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        th,td {text-align: center}
+    </style>
+    <script>
+
+        //点击超链接，删除员工信息，所以先获取所有超链接的元素节点
+        //然后为设置‘遍历’为每个a标签设置单几响应函数，
+        //定义a链接相联系的要删除的ystr，他跟a标签的关系是爷爷关系，所以用this的父亲的父亲就是他，
+        //已经定义获取到要删除的ystr,删之前再弄个弹窗确定，true就执行ystr删除的代码
+        //获取员工的姓名，他是YSTR里面的子元素的第一个，ystr返还的是数组，而且是元素，所以这里要用到innerHtml[0]
+        
+        window.onload =function(){
+            var alla =document.getElementsByTagName('a');//获取所有额超链接
+            for(var i=0;i<alla.length;i++){//为每个超链接都绑定一个单击响应函数
+                alla[i].onclick =function(){
+               var ystr = this.parentNode.parentNode;  
+               // var name = tr.getElementsByTagName('td')[0].innerText;
+                var ysname = ystr.children[0].innerText;
+             
+                var n = confirm('你确定要'+ysname+'删除？'); 
+                if(n){  ystr.parentNode.removeChild(ystr)}
+                    return false;
+                         }
+            }
+            
+
+
+            //是通过提交按钮实现，所以定义提交按钮单机函数
+            //里面要实现的是把提交表中的name和邮箱等等这些的文本框，所以用到value,然后每个先获取出来，
+            //获取出来的信息要保持在一个新的tr里面，所以创建一个newtr
+            //设置要创建tr里面的内容，把姓名和邮箱的value值都添加进去；
+            //设置好内容后，我们要找到这个newtr对象的父元素，然后把他添加进去，
+        //设置刚创建里面newtr的a标签。获取他的节点，并为他设置单几响应函数
+        
+
+
+
+            var submitbtn = document.getElementById('submitbtn');
+
+            submitbtn.onclick = function(){
+                    // 1.获取
+                    var name = document.getElementById('empName').value;
+                    var email = document.getElementById('email').value;;
+                    var salary = document.getElementById('salary').value;;
+
+                    var newtr = document.createElement('tr');//创建一个新的TR
+
+                    newtr.innerHTML = "<td>"+name+"</td>"+
+									"<td>"+email+"</td>"+
+									"<td>"+salary+"</td>"+
+									"<td><a href='javascript:;'>删除</a></td>";
+
+                    var a = newtr.getElementsByTagName('a')[0];
+                    a.onclick =function(){
+                        
+                            var ystr = this.parentNode.parentNode;
+
+
+                            var ysname = ystr.getElementsByTagName('td')[0].innerHTML;
+                            
+                           var flag = confirm('请确定是否'+ysname+'?');
+                            if(flag){ystr.parentNode.removeChild(ystr)}
+                            return false;
+                    }
+                    var table1 = document.getElementById('table1');
+                    var tbody = table1.getElementsByTagName('tbody')[0];
+                    tbody.appendChild(newtr);
+
+            };
+
+
+
+        }
+    </script>
+</head>
+<body>
+    <table id="table1" border="1" cellspacing='0' cellpadding='10px' >
+        <tr>
+            <th>姓名</th>
+            <th>邮箱</th>
+            <th>工资</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>小米</td>
+            <td>1455552</td>
+            <td>5000</td>
+            <td><a href="javascript:;">删除</a></td>
+        </tr>
+        <tr>
+            <td>小名</td>
+            <td>555555</td>
+            <td>8000</td>
+            <td><a href="http://">删除</a></td>
+        </tr>
+        <tr>
+            <td>小智</td>
+            <td>555588</td>
+            <td>10000</td>
+            <td><a href="http://">删除</a></td>
+        </tr>
+    </table>
+    
+    <div id="id1">
+	
+		<h4>添加新员工</h4>
+
+		<table >
+			<tr>
+				<td class="word">name: </td>
+				<td class="inp">
+					<input type="text" name="empName" id="empName" />
+				</td>
+			</tr>
+			<tr>
+				<td class="word">email: </td>
+				<td class="inp">
+					<input type="text" name="email" id="email" />
+				</td>
+			</tr>
+			<tr>
+				<td class="word">salary: </td>
+				<td class="inp">
+					<input type="text" name="salary" id="salary" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<button id="submitbtn" value="abc">
+						提交
+					</button>
+				</td>
+			</tr>
+		</table>
+</body>
+</html>
+
+

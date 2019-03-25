@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    var n=0;
+
+    for(var i=2;i<=100;i++) {//1-100个数字的输出
+        var a=true;//假设一个布尔值，用来保存结果。默认I是质数
+        for(var j=2;j<i;j++){//获取2到i-1之间可以除的数为J,
+            if(i%j==0) {
+                a=false;
+                break;//这里一定要加break，不然FOR会执行很多次，浏览器会崩坏
+                 }
+        }
+        if(a){
+       document.write(i+" ");n++
+        }
+    }
+
+    document.write('总共质数的个数为'+n);
+ </script>
+
+ <br>
+
+<script type="text/javascript">
+    for(var i=2;i<=100;i++) {//1-100个数字的输出
+        var a=true;//假设一个布尔值，用来保存结果。默认I是质数
+        for(var j=2;j<=Math.sqrt(i);j++){//加上I的开发，加快浏览器执行，防止喷坏
+            if(i%j==0) {
+                a=false;
+                break;
+                 }
+        }
+        if(a){
+        if(i==1){continue; }
+         else{document.write(i+" ");}
+        }
+    }
+
+ </script>
+
+ <br>
+<script type="text/javascript">
+    for(var i=2;i<=100;i++){
+        for(var j=2;j<=i;j++){///获取2到i之间可以除的数为J,这里j要等与I，才能退出执行下面的else if
+             if(i%j==0&&i!=j)//既然没有余数而且不等与他本身的话，就只有质数，
+             {break;}
+     else if(i==j){
+         document.write(i+" ");
+                    }
+        }
+    }
+   </script>
+                 <br>
+                 
+                <script type="text/javascript">//错误师范，，，，，，，，，，，，，
+                for(var i=2;i<=100;i++){
+                // var a=true;
+                    for(var j=2;j<i;j++){
+                        if(i%j==0) {
+                            // a=false;
+                            break;
+                            }
+                        else{document.write(i+" ");}
+                        }
+                }
+                    
+                        
+                
+                 </script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+     body {
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button {
+            width: 300px;
+            margin-bottom: 10px;
+        }
+
+        #btnList {
+            float:left;
+        }
+
+        #total{
+            width: 450px;
+            float:left;
+        }
+
+        ul{
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .inner li{
+            border-style: solid;
+            border-width: 1px;
+            padding: 5px;
+            margin: 5px;
+            background-color: #99ff99;
+            float:left;
+        }
+
+        .inner{
+            width:400px;
+            border-style: solid;
+            border-width: 1px;
+            margin-bottom: 10px;
+            padding: 10px;
+            float: left;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        //  定义一个函数，专门用来为指定元素绑定单击响应函数
+        function myclick(a,fun){
+            var btn = document.getElementById(a);
+            btn.onclick = fun;
+        }
+
+       window.onload = function(){
+        // /查找#bj节点
+           var btn01 = document.getElementById('btn01');
+           btn01.onclick = function(){
+               var bj = document.getElementById('bj');
+               alert(bj.innerHTML);
+           }
+           
+        //    /查找所有li节点
+           var btn02 = document.getElementById('btn02');
+           btn02.onclick = function(){
+               var lis = document.getElementsByTagName('li');
+               for(var i=0;i<lis.length;i++){
+                   alert(lis[i].innerHTML);
+               }
+           }
+
+        //    /查找name=gender的所有节点
+        var  btn03 = document.getElementById('btn03');
+        btn03.onclick = function(){
+            var names =document.getElementsByName('gender');
+            for(var i=0;i<names.length;i++){
+                   alert(names[i].value);
+               }
+        }
+
+        // /获取id为city的元素
+        myclick('btn04',function(){
+            var cityfu = document.getElementById('city');
+            var cityli = cityfu.getElementsByTagName('li');
+                for(var i=0;i<cityli.length;i++){
+                    alert(cityli[i].innerHTML);
+                }
+        });
+        
+        // /获取id为city的节点
+        myclick('btn05',function(){
+             var city = document.getElementById("city");
+            var  jd = city.children;
+             for(var i=0;i<jd.length;i++){
+                alert(jd[i].innerHTML);
+             }
+        });
+        // 返回#bj的父节点
+        myclick('btn07',function(){
+            var bj = document.getElementById('bj');
+            var fq =bj.parentNode;
+            alert(fq.innerText);
+        });
+        // 返回#username的value属性值
+        myclick('btn09',function(){
+            var um = document.getElementById("username");
+            alert(um.value);
+        });
+
+       }
+
+
+    </script>
+</head>
+<body>
+    <div id="total">
+        <div class="inner">
+            <p>
+                你喜欢哪个城市?
+            </p>
+
+            <ul id="city">
+                <li id="bj">北京</li>
+                <li>上海</li>
+                <li>东京</li>
+                <li>首尔</li>
+            </ul>
+
+            <br>
+            <br>
+
+            <p>
+                你喜欢哪款单机游戏?
+            </p>
+
+            <ul id="game">
+                <li id="rl">红警</li>
+                <li>实况</li>
+                <li>极品飞车</li>
+                <li>魔兽</li>
+            </ul>
+
+            <br />
+            <br />
+
+            <p>
+                你手机的操作系统是?
+            </p>
+
+            <ul id="phone"><li>IOS</li> <li id="android">Android</li><li>Windows Phone</li></ul>
+        </div>
+
+        <div class="inner">
+            gender:
+            <input class="hello" type="radio" name="gender" value="male"/>
+            Male
+            <input class="hello" type="radio" name="gender" value="female"/>
+            Female
+            <br>
+            <br>
+            name:
+            <input type="text" name="name" id="username" value="abcde"/>
+        </div>
+    </div>
+    <div id="btnList">
+        <div><button id="btn01">查找#bj节点</button></div>
+        <div><button id="btn02">查找所有li节点</button></div>
+        <div><button id="btn03">查找name=gender的所有节点</button></div>
+        <div><button id="btn04">查找#city下所有li节点</button></div>
+        <div><button id="btn05">返回#city的所有子节点</button></div>
+        <div><button id="btn07">返回#bj的父节点</button></div>
+        <div><button id="btn09">返回#username的value属性值</button></div>
+        <div><button id="btn11">返回#bj的文本值</button></div>
+    </div>
+</body>
+</html>

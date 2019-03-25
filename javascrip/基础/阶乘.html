@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script> 
+        function jiecheng(n){
+            if(n==1){
+                return 1;
+            }else{
+                return n*jiecheng(n-1)
+            }
+        }
+       var n=5;
+        alert(jiecheng(n));
+    </script> -->
+
+<!-- 求十位数与白位数的 -->
+    <script>
+		var y=7586;
+		alert(Math.floor((y/10)%10))
+	</script>
+
+<!-- 简单求累加或累乘 -->
+    <script>
+        function jiecheng(n){
+            var a=1;
+            for(var i=1;i<=n;i++){
+               a=a*i
+            }
+                document.write(a);
+        }
+     jiecheng(5);
+    </script>
+</body>
+</html>

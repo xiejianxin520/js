@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+     *{
+		margin: 0;
+	    padding: 0;
+	    }
+			
+        #id1{
+            width: 100px;
+            height: 100px;
+            background: green;
+            position: absolute;
+            left:0px;
+           
+        }
+    </style>
+    
+    <script type="text/javascript">
+        window.onload =function(){
+            var id1 = document.getElementById('id1');
+            var btn0 = document.getElementById('btn0');
+            var btn1 = document.getElementById('btn1');
+
+            var timer;
+
+            btn0.onclick =function(){
+                move(id1 , 800 , 10);     
+                }
+            btn1.onclick =function(){
+                move(id1 , 0 , 10);     
+                }
+
+
+
+                //尝试创建一个可以执行简单动画的函数
+			/*
+			 * 参数：
+			 * 	obj:要执行动画的对象
+			 * 	target:执行动画的终点位置
+			 * 	speed:移动的速度
+			 */
+                function move(obj,target,speed) {
+                    clearInterval(timer);
+
+				var current = parseInt(staystyle(obj,"left"));
+				//判断速度的正负值
+				//如果从0 向 800移动，则speed为正
+				//如果从800向0移动，则speed为负
+				if(current > target){
+					//此时速度应为负值
+					speed = -speed;
+				};//速度要在外面判断然后赋值进去；不能写在定时函数里面去
+
+                timer = setInterval(function(){
+
+                    var oldvalue = parseInt(staystyle(obj,"left"));
+
+
+                    var newvalue = oldvalue + speed;
+
+                    if((speed>0 && newvalue>target)||(speed<0 && newvalue<target)){
+                        newvalue = target;
+                    }
+                    
+                    obj.style.left = newvalue +'px';
+
+                 if(newvalue == target){
+                        clearInterval(timer);
+                    }   
+                },30)
+             }
+
+
+
+
+
+
+
+                function staystyle(obj , name){
+                 if(window.getComputedStyle){
+                     return getComputedStyle(obj,null)[name];
+                 }else{
+                     return  obj.currentStyle[name];
+                 }
+             } 
+        }
+    </script>
+</head>
+<body>
+        <button id="btn0">点击让div向右移动</button>
+        <button id="btn1">点击让div向左移动</button>
+        <br><br>
+    <div id="id1"></div>
+    <div style="height:800px;border-left: 1px solid black;position: absolute;left:800px;top:0px" ></div>
+   
+    
+</body>
+</html>

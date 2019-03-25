@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>    
+        var str="";
+        var arr=['一','二','三','四','五','六','七','八','九','十'];
+        for(i=0;i<10;i++){
+            for(j=1;j<=i;j++){
+                    var s='';
+                    if(i*j<10)  {s='得'+arr[i*j-1]}
+                    else if(i*j==10){s='一十'}
+                    else if(i*j<20){s='十'+arr[i*j%10-1]}
+                    else if(i*j%10==0){s=arr[Math.floor(i*j/10-1)]+'十'}
+                    else{s=arr[Math.floor(i*j/10-1)]+'十'+arr[i*j%10-1]}
+                    str+=arr[j-1]+arr[i-1]+s+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                             }
+            str+='<br/>'
+         }
+    document.write(str)
+            // 会等下输出一六，三八这种情况
+            // // var str="";
+            // var arr=['十','一','二','三','四','五','六','七','八','九','十'];
+            // for(var i=1;i<10;i++) { 
+            //     for(var j=1;j<=i;j++){
+            //     var str0='';
+            //     if(i*j<=10)
+            //         {
+            //         str0="得"+arr[i*j]
+            //         }
+            //         else if(i*j>10)
+            //         {
+            //         str0='得'+arr[Math.floor(i*j/10)] +arr[(i*j%10)]
+            //         } 
+            //          str+=arr[j]+arr[i]+str0+ '&nbsp&nbsp'
+            //         }
+            //   str+='<br/>'
+            //     }  
+            //   document.write(str)
+    </script>
+</body>
+</html>

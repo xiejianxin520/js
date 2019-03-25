@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+    *{
+         margin: 0px;
+         padding: 0px;
+    }
+    #outer{
+        background: greenyellow;
+        width: 520px;
+        height: 333px;
+        margin: 50px auto;
+        padding: 10px 0;
+        position: relative;
+        overflow: hidden;
+   
+        }
+    #imgul{
+        list-style-type:none;
+        /* width: 2600px; 写死了不好，用js自动添加图片自动变宽度*/
+        position: absolute;
+        /* 开启定位，让图片可以向左移动；
+        left:-520px; */
+    }
+    #imgul li{
+        float: left;
+        margin: 0 10px;
+    }
+    #navdiv{
+        position:absolute;
+        bottom: 15px;
+        /* *left: 197px;*死了不好，用js自动添加超链接后自动 */
+    }
+    #navdiv a{
+        /* 设置浮动后，内联行元素自动变成块元素，可以设置宽和高 */
+        float: left;
+        width: 15px;
+        height: 15px;
+        background-color:red;
+        margin: 0 5px;
+        opacity: 0.5;
+        filter:alpha(opacity=50);   
+    }
+
+    #navdiv{
+        position: absolute;
+        bottom: 15px;
+
+    }
+    #navdiv a:hover {
+        background-color:blue;
+    }
+    </style>
+   <script type="text/javascript" src="tools.js"></script>
+    <script  type="text/javascript">
+        window.onload = function(){ 
+            //自动添加图片自动设置imgul的宽度
+            var imgul = document.getElementById('imgul')
+            var imgArr = document.getElementsByTagName('img');
+            imgul.style.width = 520*imgArr.length + 'px';
+
+            //自动添加超链接设置navdiv自动居中
+            var navdiv = document.getElementById('navdiv');
+            var outer = document.getElementById('outer');
+            navdiv.style.left = (outer.offsetWidth - navdiv.offsetWidth)/2 + 'px';
+
+            // 点击超链接切换到指定的图片
+            var alla =document.getElementsByTagName('a');
+
+            var index = 0;
+            alla[index].style.backgroundColor =  "black";//设置默认选中的效果
+
+            for(var i=0;i<alla.length;i++){
+                    alla[i].num = i;///为每一个超链接都添加一个num属性来标记可以来获取 他在数组的索引
+                alla[i].onclick = function(){
+                    //关闭自动切换的定时器,避免两个同事干扰
+                    clearInterval(timer);
+                    
+                    index = this.num;
+                    // imgul.style.left = -520*index +'px';  //切换图片就是改变imgul的向左偏移 
+                   move(imgul,'left',-520*index,20,function(){
+                             openChange();//手动点击图片切换后结束，再开始自动切换
+                   });//使用move函数工具来切换图片
+                    setA();//调用函数让a颜色变化；
+                   
+                }
+            }
+
+            
+            //创建一个方法用来设置选中的a的颜色
+            function setA(){
+                if(index >= imgArr.length-1){//最后一张的索引跟第一一样
+                    index =0;
+                    imgul.style.left = 0;//最后一张的时候，瞬间变成第一张
+                }
+
+                for(var i=0;i<alla.length;i++){
+                    alla[i].style.backgroundColor = '';//这个要设置空值，才不会影响到hover颜色
+                }
+                alla[index].style.backgroundColor = 'black';
+            };
+
+            //创建一个函数，用来开启自动切换图片
+            var timer;
+            function openChange(){
+                timer = setInterval(function(){
+                    index++;
+                    index =index % imgArr.length;//
+                    move(imgul,'left',-520*index,20,function(){
+                        setA();
+                    })
+                },3000)
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <ul id="imgul">
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+            <li><img src="img/5.jpg" alt=""></li>
+            <li><img src="img/1.jpg" alt=""></li>
+        </ul>
+        <div id="navdiv">
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+        </div>
+    </div>
+   
+</body>
+</html>

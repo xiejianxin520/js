@@ -1,0 +1,1 @@
+document.write('我是外部的');

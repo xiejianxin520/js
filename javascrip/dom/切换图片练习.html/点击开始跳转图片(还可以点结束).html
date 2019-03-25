@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin:0px;
+            padding: 0px;
+        }
+    #id1{   
+            width: 500px;
+            margin: 20px auto;
+            padding: 10px;
+            background: greenyellow;
+            text-align: center;
+         }
+    #btn0,#btn1{
+        height: 3em;
+        width: 5em;
+    }
+    </style>
+    <script type="text/javascript">
+        window.onload = function(){
+                var btn0 = document.getElementById('btn0');
+                var btn1 = document.getElementById('btn1');
+                var img = document.getElementsByTagName('img')[0];
+
+                var imgArr = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"];
+
+                var index =0;
+                
+                //定义一个变量，用来保存定时器的标识
+				var timer;
+
+                btn0.onclick = function(){
+
+                    /*
+					 * 目前，我们每点击一次按钮，就会开启一个定时器，
+					 * 	点击多次就会开启多个定时器，这就导致图片的切换速度过快，
+					 * 	并且我们只能关闭最后一次开启的定时器	 */
+					
+					//在开启定时器之前，需要将当前元素上的其他定时器关闭
+					clearInterval(timer);
+					
+                   timer = setInterval(function(){
+                            index++;
+                            if(index>=imgArr.length){
+                                index = 0;
+                            }
+                        img.src = imgArr[index];  
+                    },1000)
+                };
+
+                btn1.onclick = function(){
+					//点击按钮以后，停止图片的自动切换，关闭定时器
+					/*
+					 * clearInterval()可以接收任意参数，
+					 * 	如果参数是一个有效的定时器的标识，则停止对应的定时器
+					 * 	如果参数不是一个有效的标识，则什么也不做
+					 */
+					clearInterval(timer);
+					
+				};
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+    <div id="id1">
+        <img src="img/1.jpg" alt="">
+        <button id="btn0">开始</button>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <button id="btn1">停止</button>
+    </div>
+</body>
+</html>

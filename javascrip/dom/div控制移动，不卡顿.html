@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #id1{
+            width: 100px;
+            height:100px;
+            position: absolute;
+        }
+        body{
+            background-image: url('星空.png');
+            background-repeat:no-repeat;
+            background-size:cover;
+        }
+    </style>
+    <script text='text/javascript'>
+        window.onload =function(){
+                var speed =10;
+                var dir =0;
+            setInterval(function(){
+                    switch(dir){
+                        case 37:
+                            id1.style.left = id1.offsetLeft - speed +'px';
+                             break;
+                        case 38:
+                            id1.style.top = id1.offsetTop - speed +'px';
+                            break;
+                        case 39:
+                            id1.style.left = id1.offsetLeft +speed + 'px';
+                            break;
+                        case 40:
+                            id1.style.top = id1.offsetTop +speed +'px';
+                    };
+            },30)
+
+            document.onkeydown =function(event){
+                event = event || window.event;
+                if(event.shiftKey){
+                    speed =80;
+                }else{
+                     speed =10;
+                     }
+                dir = event.keyCode;
+            };
+
+            document.onkeyup =function(event){
+                dir = 0;
+            }
+        }
+    </script>
+</head>
+<body>
+   <img src="飞机.png  " alt="" id="id1">
+</body>
+</html>

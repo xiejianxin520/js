@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr=[1,2,2,2,3,4,2,1,3,5,4];
+
+        for(var i=0;i<arr.length;i++){
+            for(var j=i+1;j<arr.length;j++){//获取I之后的数为j,来比较
+                if(arr[i]==arr[j]){
+                arr.splice(j,1);//如果相等的话删除后，下一个会出现补位替代原来位置，系统却自动跳过去，这个时候下面J--
+                i--;//当相等的时候的条件下，I--可以出现防止重复不比下去。这样相等的话会数继续再比下去
+              }   
+            }
+        }
+            document.write(arr);
+    </script>
+</body>
+</html>

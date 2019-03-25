@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+     *{
+		margin: 0;
+	    padding: 0;
+	    }
+			
+        #id1{
+            width: 100px;
+            height: 100px;
+            background: green;
+            position: absolute;
+            left:0px;
+           
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload =function(){
+            var id1 = document.getElementById('id1');
+            var btn0 = document.getElementById('btn0');
+            var timer;
+                 btn0.onclick = function(){
+                    //停止上个定时器
+                    clearInterval(timer);
+                  
+                    timer=setInterval(function(){
+                    //定义他原来开始的状态
+                    var oldvalue = parseInt(staystly(id1,"left"));
+
+                    var newvalue = oldvalue + 42;
+
+                    if(newvalue>800){
+                        newvalue = 800;
+                    }
+                    
+                    id1.style.left = newvalue +'PX';//要设置再中间才能把上一句的if800给到，刚好在终点位置
+
+                    if(newvalue == 800){
+                        clearInterval(timer);
+                    }
+
+                },30)
+            }
+
+ 
+            function staystly(obj , name){
+                 if(window.getComputedStyle){
+                     return getComputedStyle(obj,null)[name];
+                 }else{
+                     return  obj.currentStyle[name];
+                 }
+             } 
+
+        }
+    </script>
+</head>
+<body>
+        <button id="btn0">点击让div向右移动</button>
+        <br><br>
+    <div id="id1"></div>
+    <div style="height:800px;border-left: 1px solid black;position: absolute;left:800px;top:0px" ></div>
+   
+    
+</body>
+</html>

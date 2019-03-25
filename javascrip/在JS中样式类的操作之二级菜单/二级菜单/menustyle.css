@@ -1,0 +1,52 @@
+@charset "utf-8";
+
+
+.sdmenu {
+	width: 150px;
+	margin: 0 auto;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	padding-bottom: 10px;
+	background: url(bottom.gif) no-repeat right bottom;
+	color: #fff;
+}
+.sdmenu div {
+	background: url(title.gif) repeat-x;
+	overflow: hidden;
+} 
+/* 超出后变小，隐蔽 */
+.collapsed {
+	height: 25px;
+}
+
+.sdmenu div:first-child {
+	background: url(toptitle.gif) no-repeat;
+}
+ .menuSpan {
+	display: block;
+	height: 15px;
+	line-height: 15px;
+	overflow: hidden;
+	padding: 5px 25px;
+	font-weight: bold;
+	color: white;
+	background: url(expanded.gif) no-repeat 10px center;
+	cursor: pointer;
+	border-bottom: 1px solid #ddd;
+}
+/* 有这个属性就有箭头向下的背景 */
+.collapsed span {
+	background-image: url(collapsed.gif);
+}
+.sdmenu div a {
+	padding: 5px 10px;
+	background: #eee;
+	display: block;
+	border-bottom: 1px solid #ddd;
+	color: #066;
+}
+.sdmenu div a:hover {
+	background: #066 url(linkarrow.gif) no-repeat right center;
+	color: #fff;
+	text-decoration: none;
+}

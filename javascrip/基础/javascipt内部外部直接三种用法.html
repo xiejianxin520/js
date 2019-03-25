@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<title> 演示</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="one.js"></script>
+</head>
+<body>
+    <input type="button" value="按钮" onclick="alert('我是内部直接链接,然后是个事件按钮')">
+    <script>
+        document.write('<h3> 现在就是一个标题</h3><hr />');   
+    </script>
+    <script>
+        alert("我是一个弹窗"); 
+        var x=10;
+        document.write('第一显示变量:'+x);
+    </script>
+</body>
+</html> 
