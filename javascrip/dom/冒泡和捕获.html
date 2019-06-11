@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    #box1 {
+      width: 200px;
+      height: 200px;
+      background-color: yellowgreen;
+    }
+
+    #s1 {
+      background-color: yellow;
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload = function () {
+
+      /*
+       * 事件的冒泡（Bubble）
+       * 	- 所谓的冒泡指的就是事件的向上传导，当后代元素上的事件被触发时，其祖先元素的相同事件也会被触发
+       * 	- 在开发中大部分情况冒泡都是有用的,如果不希望发生事件冒泡可以通过事件对象来取消冒泡
+       * 先捕获，再自身事件，最后冒泡事件
+       */
+
+      //为s1绑定一个单击响应函数
+      var span = document.getElementById("span");
+      var box1 = document.getElementById("box1");
+      let btn = document.querySelectorAll('.btns')[0]
+
+
+
+      // span.onclick = function (event) {
+      //   event = event || window.event;
+
+      //   console.log("我是span的单击响应函数");
+
+      //   //取消冒泡
+      //   //可以将事件对象的cancelBubble设置为true，即可取消冒泡
+      //   // event.cancelBubble = true;
+      // };
+
+      // //为box1绑定一个单击响应函数
+
+      // box1.onclick = function (event) {
+      //   event = event || window.event;
+      //   console.log("我是div的单击响应函数");
+
+      //   // event.cancelBubble = true;
+      // };
+
+      // //为body绑定一个单击响应函数
+      // document.body.onclick = function () {
+      //   console.log("我是body的单击响应函数");
+      // };
+
+
+      // btn.onclick = function () {
+      //   // event = event || window.event;
+      //   console.log('btn的函数');
+      // }
+
+      span.addEventListener('click', function () {
+        console.log("我是span的单击响应函数11111");
+      }, true)
+      box1.addEventListener('click', function () {
+        console.log("我是div的单击响应函数的单击响应函数22222222");
+      }, true)
+      btn.addEventListener('click', function () {
+        console.log("我btn的单击响应函数11111");
+      }, true)
+      document.body.addEventListener('click', function () {
+        console.log("我是body的单击响应函数333333");
+      }, true)
+      //冒泡
+      document.body.addEventListener('click', function () {
+        console.log("我是body的冒泡333333");
+      }, false)
+
+
+    };
+  </script>
+</head>
+
+<body>
+
+  <div id="box1">
+    我是box1
+    <span id="span">我是span</span>
+    <button class="btns">我是btn</button>
+  </div>
+
+</body>
+
+</html>
